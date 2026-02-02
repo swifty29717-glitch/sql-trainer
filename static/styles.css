@@ -1,0 +1,229 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.4; background: #fcfcfc; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 980px; margin: 0 auto; padding: 16px; }
+
+.header { border-bottom: 1px solid #eaeaea; background: #fff; position: sticky; top: 0; }
+.header__inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.logo { font-weight: 700; }
+.nav a { margin-left: 12px; color: #444; }
+.nav a:hover { text-decoration: underline; }
+
+.footer { border-top: 1px solid #eaeaea; margin-top: 32px; padding: 16px 0; color: #777; }
+
+.muted { color: #666; }
+
+
+/* ===== Page header (title + filter) ===== */
+.page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 8px 0 10px; }
+.page-title { margin: 0; font-size: 40px; letter-spacing: -0.5px; }
+.page-subtitle { margin: 8px 0 0; max-width: 680px; }
+.btn-link { color: #444; text-decoration: underline; font-size: 14px; }
+
+/* ===== Lectures cards ===== */
+.lecture-card__title { display: flex; align-items: center; gap: 10px; }
+.lecture-card__icon { font-size: 20px; line-height: 1; }
+.lecture-card__cta { margin-top: 10px; font-size: 13px; }
+
+.filter { margin: 12px 0 16px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.filter select { padding: 8px 10px; border-radius: 10px; border: 1px solid #ddd; background: #fff; }
+
+.task-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 16px; }
+.task-card { border: 1px solid #eaeaea; border-radius: 10px; padding: 14px; background: #fff; }
+.task-card:hover { border-color: #d0d0d0; }
+.task-card__top { display: flex; align-items: start; justify-content: space-between; gap: 10px; }
+.task-card__title { margin: 0; font-size: 18px; }
+.task-card__desc { margin: 10px 0 0; color: #555; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 999px; border: 1px solid #ddd; font-size: 12px; color: #444; white-space: nowrap; }
+
+.task-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+.code { background: #0b1020; color: #e9eefc; padding: 12px; border-radius: 10px; overflow: auto; }
+
+.sql-form textarea { width: 100%; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; padding: 10px; border-radius: 10px; border: 1px solid #ddd; }
+.form-actions { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+
+button { padding: 9px 12px; border: 1px solid #ccc; border-radius: 10px; background: #111; color: #fff; cursor: pointer; }
+button.secondary { background: #fff; color: #111; }
+button:hover { opacity: 0.92; }
+
+.alert { padding: 10px 12px; border-radius: 10px; background: #fff3f3; border: 1px solid #ffd0d0; color: #8a1f1f; }
+
+.table-wrap { overflow: auto; border: 1px solid #eaeaea; border-radius: 10px; background: #fff; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 10px; border-bottom: 1px solid #f0f0f0; text-align: left; font-size: 14px; }
+thead th { background: #fafafa; }
+
+.flash-list { margin: 10px 0; display: grid; gap: 8px; }
+.flash { padding: 10px 12px; border-radius: 10px; border: 1px solid #ddd; background: #f7f7f7; }
+.flash--info { border-color: #cfe6ff; background: #eef6ff; }
+.flash--ok { border-color: #c9f2d2; background: #eefbf1; }
+.flash--bad { border-color: #ffd0d0; background: #fff3f3; }
+/* ===== SQL code blocks ===== */
+/* ===== SQL code blocks (neutral) ===== */
+pre.sql {
+  background: #f6f8fa;         /* мягкий светло-серый */
+  color: #1f2328;
+  padding: 12px 14px;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 14px 0;
+  border: 1px solid #e5e7eb;
+}
+
+pre.sql code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: pre;
+}
+/* ===== Example result table for lectures ===== */
+.result {
+  margin: 10px 0 18px;
+}
+
+.result__title {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 8px 0 6px;
+}
+
+.result table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden; /* чтобы скругление работало */
+}
+
+.result th, .result td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: left;
+  font-size: 14px;
+}
+
+.result thead th {
+  background: #f9fafb;
+  color: #374151;
+}
+
+/* ===== Lectures typography ===== */
+.lecture {
+  max-width: 900px;
+}
+
+.lecture h1 {
+  margin: 8px 0 10px;
+  font-size: 40px;
+  letter-spacing: -0.5px;
+}
+
+.lecture h2 {
+  margin: 26px 0 10px;
+  font-size: 22px;
+}
+
+.lecture h3 {
+  margin: 18px 0 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+.lecture p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #222;
+  margin: 10px 0;
+}
+
+.lecture ul {
+  margin: 10px 0 10px 20px;
+}
+
+.lecture li {
+  margin: 6px 0;
+}
+
+.lecture hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 22px 0;
+}
+
+.lecture code {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-size: 0.95em;
+}
+
+/* Neutral SQL block */
+pre.sql {
+  background: #f6f8fa;
+  color: #1f2328;
+  padding: 12px 14px;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 14px 0;
+  border: 1px solid #e5e7eb;
+}
+
+pre.sql code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: pre;
+}
+
+/* ===== Lecture callouts: note / tip / warning ===== */
+.callout {
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin: 12px 0;
+}
+
+.callout__title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.callout--warning {
+  border-color: #ffd0d0;
+  background: #fff3f3;
+  color: #7a1f1f;
+}
+
+.callout--tip {
+  border-color: #cfe6ff;
+  background: #eef6ff;
+  color: #123b6b;
+}
+
+.callout--note {
+  border-color: #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+}
+
+/* "Mistakes" list inside callout */
+.mistakes {
+  margin: 8px 0 0 18px;
+}
+
+.mistakes li {
+  margin: 8px 0;
+}
+
+.mistakes code {
+  background: rgba(255,255,255,0.35);
+  border-color: rgba(0,0,0,0.08);
+}

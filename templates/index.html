@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% set title = "Главная" %}
+{% block content %}
+  <h1>Задачи по SQL</h1>
+  <p class="muted">Выберите задачу и напишите SQL-запрос прямо в браузере.</p>
+
+  <form class="filter" method="get" action="{{ url_for('index') }}">
+    <label>
+      Сложность:
+      <select name="level" onchange="this.form.submit()">
+        <option value="" {% if not selected_level %}selected{% endif %}>Все</option>
+        {% for lvl in levels %}
+          <option value="{{ lvl }}" {% if selected_level == lvl %}selected{% endif %}>{{ lvl }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <noscript>
+      <button type="submit" class="secondary">Применить</button>
+    </noscript>
+  </form>
+
+  <div class="task-list">
+    {% for t in tasks %}
+      <a class="task-card" href="{{ url_for('task_page', task_id=t.id) }}">
+        <div class="task-card__top">
+          <h2 class="task-card__title">{{ t.title }}</h2>
+          <span class="badge">{{ t.level }}</span>
+        </div>
+        <p class="task-card__desc">{{ t.short_desc }}</p>
+      </a>
+    {% endfor %}
+  </div>
+
+  {% if tasks|length == 0 %}
+    <p class="muted">Задач с таким уровнем сложности пока нет.</p>
+  {% endif %}
+{% endblock %}

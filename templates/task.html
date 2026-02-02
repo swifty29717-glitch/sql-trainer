@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% set title = task.title %}
+{% block content %}
+  <div class="task-header">
+    <h1>{{ task.title }}</h1>
+    <span class="badge">{{ task.level }}</span>
+  </div>
+
+  <p style="white-space: pre-line;">{{ task.full_desc }}</p>
+
+  <h3>Структура таблиц</h3>
+  <pre class="code">{{ task.dataset_sql | trim }}</pre>
+
+  <h3>Пример данных</h3>
+  <pre class="code">{{ task.seed_sql | trim }}</pre>
+
+  <h3>Ваш SQL</h3>
+
+  {% if verdict is not none %}
+    {% if verdict %}
+      <div class="flash flash--ok">✅ Решение верное. {{ verdict_msg }}</div>
+    {% else %}
+      <div class="flash flash--bad">❌ Решение неверное. {{ verdict_msg }}</div>
+    {% endif %}
+  {% endif %}
+
+  {% if error %}
+    <div class="alert">{{ error }}</div>
+  {% endif %}
+
+  <form method="post" class="sql-form">
+    <textarea name="sql" rows="8" placeholder="Например: SELECT ...">{{ sql }}</textarea>
+
+    <div class="form-actions">
+      <button type="submit" name="action" value="run">Выполнить</button>
+      <button type="submit" name="action" value="reset" class="secondary"
+              onclick="return confirm('Сбросить датасет к исходному состоянию?')">
+        Сбросить датасет
+      </button>
+    </div>
+  </form>
+
+  <h3>Результат</h3>
+
+  {% if columns %}
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            {% for c in columns %}
+              <th>{{ c }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in rows %}
+            <tr>
+              {% for c in columns %}
+                <td>{{ r[c] }}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">Показано строк: {{ rows|length }}</p>
+  {% else %}
+    <p class="muted">Нет табличного результата (возможно, запрос не SELECT), или результат пуст.</p>
+  {% endif %}
+{% endblock %}
